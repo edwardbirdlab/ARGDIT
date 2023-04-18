@@ -25,7 +25,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('seq_db_path', help = 'FASTA file path for protein database with Uniprot IDs')
 parser.add_argument('output_seq_db_path',
                     help = 'output file path for protein database with converted NCBI protein accession no.')
-parser.add_argument('config_path', help = 'Path to your config.ini')
+parser.add_argument('-con', '--config', action = 'store', dest = 'config_path', required = True,
+                        help = 'config.ini path')
 args = parser.parse_args()
 
 config = Config(args.config_path)

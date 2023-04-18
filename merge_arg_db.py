@@ -412,7 +412,7 @@ if __name__ == '__main__':
 
     ProcLog.init_logs()
 
-    config = Config('args.config_path')
+    config = Config(args.config_path)
 
     for seq_db_path in args.seq_db_paths:
         if not os.path.exists(seq_db_path):
