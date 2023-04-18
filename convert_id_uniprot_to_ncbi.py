@@ -19,16 +19,19 @@ MAX_ATTEMPT = 3
 
 ProcLog.init_logs()
 
-config = Config('config.ini')
-if ProcLog.has_exec_error():
-    ProcLog.export_exec_error(sys.stdout)
-    sys.exit()
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('seq_db_path', help = 'FASTA file path for protein database with Uniprot IDs')
 parser.add_argument('output_seq_db_path',
                     help = 'output file path for protein database with converted NCBI protein accession no.')
+parser.add_argument('config_path', help = 'Path to your config.ini')
 args = parser.parse_args()
+
+config = Config(args.config_path)
+if ProcLog.has_exec_error():
+    ProcLog.export_exec_error(sys.stdout)
+    sys.exit()
 
 uniprot_ids = set()
 

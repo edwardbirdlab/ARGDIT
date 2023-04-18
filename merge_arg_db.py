@@ -405,12 +405,14 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--geneticcode', action = 'store', type = int, dest = 'genetic_code',
                         help = 'genetic code to specify which translation table to be used')
     parser.add_argument('-e', '--exportlog', action = 'store_true', help = 'export integration results and process log')
+    parser.add_argument('-con', '--config', action = 'store', dest = 'config_path', required = True,
+                        help = 'config.ini path')
 
     args = parser.parse_args()
 
     ProcLog.init_logs()
 
-    config = Config('config.ini')
+    config = Config('args.config_path')
 
     for seq_db_path in args.seq_db_paths:
         if not os.path.exists(seq_db_path):

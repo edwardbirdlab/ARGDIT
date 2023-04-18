@@ -97,13 +97,15 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--geneticcode', action = 'store', type = int, dest = 'genetic_code',
                         help = 'genetic code to specify which translation table to be used')
     parser.add_argument('-e', '--exportlog', action = 'store_true', help = 'export validation results and process log')
+    parser.add_argument('-con', '--config', action = 'store', dest = 'config_path', required = True,
+                        help = 'config.ini path')
     args = parser.parse_args()
 
     class_label_field_nums = None
     is_check_seq_class = False
     ProcLog.init_logs()
 
-    config = Config('config.ini')
+    config = Config('args.config_path')
 
     if not os.path.exists(args.seq_db_path):
         ProcLog.log_exec_error('Database file \'{}\' does not exist'.format(args.seq_db_path))
